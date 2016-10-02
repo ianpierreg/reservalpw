@@ -1,0 +1,31 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\CautelaArmamento */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<div class="cautela-armamento-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'quantidade')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'data_inicio')->textInput() ?>
+
+    <?= $form->field($model, 'data_fim')->textInput() ?>
+
+    <?= $form->field($model, 'militar_id')->textInput() ?>
+
+    <?= $form->field($model, 'usuario_id')->textInput() ?>
+
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+</div>
