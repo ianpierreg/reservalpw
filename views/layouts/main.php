@@ -476,7 +476,7 @@ $baseUrl = $AppAsset->baseUrl;
 <!-- Footer -->
 
 <footer class="site-footer">
-    <div class="site-footer-legal">© 2016 <a href="https://www.vivainovacao.com/">Négocios Viva Smith</a></div>
+    <div class="site-footer-legal">© 2016 <a href="hhttp://www.eb.mil.br/">Exércio Brasileiro</a></div>
 </footer>
 
 <?php $this->endBody() ?>
