@@ -10,13 +10,12 @@ use yii\bootstrap\Modal;
 
 use app\assets\AppAssetGridView;
 use app\assets\AppAssetIcons;
-use app\assets\AppAssetPopover;
+
 
 use app\assets\AppAssetDatePicker;
 
 $AppAssetGridView = app\assets\AppAssetGridView::register($this);
 $AppAssetIcons = app\assets\AppAssetIcons::register($this);
-$AppAssetPopover = app\assets\AppAssetPopover::register($this);
 $AppAssetDatePicker = app\assets\AppAssetDatePicker::register($this);
 
 
@@ -425,7 +424,7 @@ $baseUrl = $AppAsset->baseUrl;
 
                 <?php
                 if (Yii::$app->session->getFlash('success')) { ?>
-                    <div class="alert  alert-icon alert-success alert-dismissible" role="alert">
+                        <div class="alert  alert-icon alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

@@ -5,29 +5,15 @@ namespace app\controllers;
 use Yii;
 use app\models\UsuarioHasReserva;
 use app\models\UsuarioHasReservaSearch;
-use yii\web\Controller;
+use app\controllers\MainController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UsuarioHasReservaController implements the CRUD actions for UsuarioHasReserva model.
  */
-class UsuarioHasReservaController extends Controller
+class UsuarioHasReservaController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all UsuarioHasReserva models.
@@ -65,8 +51,8 @@ class UsuarioHasReservaController extends Controller
     public function actionCreate()
     {
         $model = new UsuarioHasReserva();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'usuario_id' => $model->usuario_id, 'reserva_id' => $model->reserva_id]);
         } else {
             return $this->render('create', [

@@ -18,7 +18,7 @@ class AcessorioSearch extends Acessorio
     public function rules()
     {
         return [
-            [['id', 'reserva_id', 'tipo_acessorio_id', 'cautela_acessorio_id'], 'integer'],
+            [['id', 'status', 'reserva_id', 'tipo_acessorio_id', 'cautela_acessorio_id'], 'integer'],
             [['observacao'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class AcessorioSearch extends Acessorio
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'status' => $this->status,
             'reserva_id' => $this->reserva_id,
             'tipo_acessorio_id' => $this->tipo_acessorio_id,
             'cautela_acessorio_id' => $this->cautela_acessorio_id,

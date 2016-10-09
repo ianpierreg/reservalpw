@@ -3,26 +3,39 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Reserva;
-use app\models\ReservaSearch;
-use app\controllers\MainController;
+use app\models\CautelaAcessorio;
+use app\models\CautelaAcessorioSearch;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ReservaController implements the CRUD actions for Reserva model.
+ * CautelaAcessorioController implements the CRUD actions for CautelaAcessorio model.
  */
-class ReservaController extends MainController
+class CautelaAcessorioController extends Controller
 {
-
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
 
     /**
-     * Lists all Reserva models.
+     * Lists all CautelaAcessorio models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ReservaSearch();
+        $searchModel = new CautelaAcessorioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -32,7 +45,7 @@ class ReservaController extends MainController
     }
 
     /**
-     * Displays a single Reserva model.
+     * Displays a single CautelaAcessorio model.
      * @param integer $id
      * @return mixed
      */
@@ -44,13 +57,13 @@ class ReservaController extends MainController
     }
 
     /**
-     * Creates a new Reserva model.
+     * Creates a new CautelaAcessorio model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Reserva();
+        $model = new CautelaAcessorio();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -62,7 +75,7 @@ class ReservaController extends MainController
     }
 
     /**
-     * Updates an existing Reserva model.
+     * Updates an existing CautelaAcessorio model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -81,7 +94,7 @@ class ReservaController extends MainController
     }
 
     /**
-     * Deletes an existing Reserva model.
+     * Deletes an existing CautelaAcessorio model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -94,15 +107,15 @@ class ReservaController extends MainController
     }
 
     /**
-     * Finds the Reserva model based on its primary key value.
+     * Finds the CautelaAcessorio model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Reserva the loaded model
+     * @return CautelaAcessorio the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Reserva::findOne($id)) !== null) {
+        if (($model = CautelaAcessorio::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

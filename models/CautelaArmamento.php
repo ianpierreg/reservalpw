@@ -15,8 +15,8 @@ use Yii;
  * @property integer $usuario_id
  *
  * @property Armamento[] $armamentos
- * @property User $usuario
  * @property Militar $militar
+ * @property User $usuario
  */
 class CautelaArmamento extends \yii\db\ActiveRecord
 {
@@ -38,8 +38,8 @@ class CautelaArmamento extends \yii\db\ActiveRecord
             [['data_inicio', 'data_fim'], 'safe'],
             [['militar_id', 'usuario_id'], 'integer'],
             [['quantidade'], 'string', 'max' => 45],
-            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['usuario_id' => 'id']],
             [['militar_id'], 'exist', 'skipOnError' => true, 'targetClass' => Militar::className(), 'targetAttribute' => ['militar_id' => 'id']],
+            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['usuario_id' => 'id']],
         ];
     }
 
@@ -69,16 +69,16 @@ class CautelaArmamento extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsuario()
+    public function getMilitar()
     {
-        return $this->hasOne(User::className(), ['id' => 'usuario_id']);
+        return $this->hasOne(Militar::className(), ['id' => 'militar_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMilitar()
+    public function getUsuario()
     {
-        return $this->hasOne(Militar::className(), ['id' => 'militar_id']);
+        return $this->hasOne(User::className(), ['id' => 'usuario_id']);
     }
 }

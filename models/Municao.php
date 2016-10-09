@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $observacao
+ * @property integer $status
  * @property integer $reserva_id
  * @property integer $tipo_municao_id
  * @property integer $cautela_municao_id
@@ -34,8 +35,8 @@ class Municao extends \yii\db\ActiveRecord
     {
         return [
             [['observacao'], 'string'],
-            [['reserva_id', 'tipo_municao_id', 'cautela_municao_id'], 'required'],
-            [['reserva_id', 'tipo_municao_id', 'cautela_municao_id'], 'integer'],
+            [['status', 'reserva_id', 'tipo_municao_id'], 'required'],
+            [['status', 'reserva_id', 'tipo_municao_id', 'cautela_municao_id'], 'integer'],
             [['cautela_municao_id'], 'exist', 'skipOnError' => true, 'targetClass' => CautelaMunicao::className(), 'targetAttribute' => ['cautela_municao_id' => 'id']],
             [['reserva_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reserva::className(), 'targetAttribute' => ['reserva_id' => 'id']],
             [['tipo_municao_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoMunicao::className(), 'targetAttribute' => ['tipo_municao_id' => 'id']],
@@ -50,6 +51,7 @@ class Municao extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'observacao' => 'Observacao',
+            'status' => 'Status',
             'reserva_id' => 'Reserva ID',
             'tipo_municao_id' => 'Tipo Municao ID',
             'cautela_municao_id' => 'Cautela Municao ID',

@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\MunicaoSearch */
+/* @var $model app\models\CautelaAcessorioSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="municao-search">
+<div class="cautela-acessorio-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,15 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'observacao') ?>
+    <?= $form->field($model, 'quantidade') ?>
 
-    <?= $form->field($model, 'status') ?>
+    <?= $form->field($model, 'data_inicio') ?>
 
-    <?= $form->field($model, 'reserva_id') ?>
+    <?= $form->field($model, 'data_fim') ?>
 
-    <?= $form->field($model, 'tipo_municao_id') ?>
+    <?= $form->field($model, 'militar_id') ?>
 
-    <?php // echo $form->field($model, 'cautela_municao_id') ?>
+    <?php // echo $form->field($model, 'usuario_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

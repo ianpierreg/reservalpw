@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "tipo_acessorio".
  *
  * @property integer $id
- * @property integer $quantidade
+
  * @property string $descricao
  *
  * @property Acessorio[] $acessorios
@@ -29,8 +29,7 @@ class TipoAcessorio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['quantidade', 'descricao'], 'required'],
-            [['quantidade'], 'integer'],
+            [['descricao'], 'required'],
             [['descricao'], 'string', 'max' => 200],
         ];
     }
@@ -42,7 +41,7 @@ class TipoAcessorio extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'quantidade' => 'Quantidade',
+
             'descricao' => 'Descricao',
         ];
     }

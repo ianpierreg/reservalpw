@@ -5,29 +5,16 @@ namespace app\controllers;
 use Yii;
 use app\models\Militar;
 use app\models\MilitarSearch;
-use yii\web\Controller;
+use app\controllers\MainController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * MilitarController implements the CRUD actions for Militar model.
  */
-class MilitarController extends Controller
+class MilitarController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all Militar models.

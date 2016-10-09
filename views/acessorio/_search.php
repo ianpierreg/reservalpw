@@ -19,11 +19,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'observacao') ?>
 
+    <?= $form->field($model, 'status') ?>
+
     <?= $form->field($model, 'reserva_id') ?>
 
     <?= $form->field($model, 'tipo_acessorio_id') ?>
 
-    <?= $form->field($model, 'cautela_acessorio_id') ?>
+    <?php // echo $form->field($model, 'cautela_acessorio_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

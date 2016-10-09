@@ -18,7 +18,7 @@ class TipoArmamentoSearch extends TipoArmamento
     public function rules()
     {
         return [
-            [['id', 'quantidade'], 'integer'],
+            [['id'], 'integer'],
             [['modelo', 'fabricante'], 'safe'],
         ];
     }
@@ -60,7 +60,6 @@ class TipoArmamentoSearch extends TipoArmamento
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quantidade' => $this->quantidade,
         ]);
 
         $query->andFilterWhere(['like', 'modelo', $this->modelo])

@@ -1,7 +1,9 @@
 <?php
 
-namespace app\models;
 
+
+namespace app\models;
+use webvimark\modules\UserManagement\models\User;
 use Yii;
 
 /**
@@ -42,8 +44,8 @@ class UsuarioHasReserva extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'usuario_id' => 'Usuario ID',
-            'reserva_id' => 'Reserva ID',
+            'usuario_id' => 'Usuário',
+            'reserva_id' => 'Reserva',
         ];
     }
 

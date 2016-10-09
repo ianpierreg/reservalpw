@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $num_serie
+ * @property integer $status
  * @property integer $reserva_id
  * @property integer $tipo_armamento_id
  * @property integer $cautela_armamento_id
@@ -33,8 +34,8 @@ class Armamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['num_serie', 'reserva_id', 'tipo_armamento_id', 'cautela_armamento_id'], 'required'],
-            [['reserva_id', 'tipo_armamento_id', 'cautela_armamento_id'], 'integer'],
+            [['num_serie', 'status', 'reserva_id', 'tipo_armamento_id'], 'required'],
+            [['status', 'reserva_id', 'tipo_armamento_id', 'cautela_armamento_id'], 'integer'],
             [['num_serie'], 'string', 'max' => 45],
             [['cautela_armamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => CautelaArmamento::className(), 'targetAttribute' => ['cautela_armamento_id' => 'id']],
             [['reserva_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reserva::className(), 'targetAttribute' => ['reserva_id' => 'id']],
@@ -50,6 +51,7 @@ class Armamento extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'num_serie' => 'Num Serie',
+            'status' => 'Status',
             'reserva_id' => 'Reserva ID',
             'tipo_armamento_id' => 'Tipo Armamento ID',
             'cautela_armamento_id' => 'Cautela Armamento ID',

@@ -18,7 +18,7 @@ class MunicaoSearch extends Municao
     public function rules()
     {
         return [
-            [['id', 'reserva_id', 'tipo_municao_id', 'cautela_municao_id'], 'integer'],
+            [['id', 'status', 'reserva_id', 'tipo_municao_id', 'cautela_municao_id'], 'integer'],
             [['observacao'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class MunicaoSearch extends Municao
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'status' => $this->status,
             'reserva_id' => $this->reserva_id,
             'tipo_municao_id' => $this->tipo_municao_id,
             'cautela_municao_id' => $this->cautela_municao_id,

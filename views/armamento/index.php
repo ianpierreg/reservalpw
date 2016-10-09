@@ -26,9 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'num_serie',
+            'status',
             'reserva_id',
             'tipo_armamento_id',
-            'cautela_armamento_id',
+            // 'cautela_armamento_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

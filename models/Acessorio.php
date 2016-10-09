@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $observacao
+ * @property integer $status
  * @property integer $reserva_id
  * @property integer $tipo_acessorio_id
  * @property integer $cautela_acessorio_id
@@ -33,9 +34,9 @@ class Acessorio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['observacao', 'reserva_id', 'tipo_acessorio_id', 'cautela_acessorio_id'], 'required'],
+            [['observacao', 'status', 'reserva_id', 'tipo_acessorio_id'], 'required'],
             [['observacao'], 'string'],
-            [['reserva_id', 'tipo_acessorio_id', 'cautela_acessorio_id'], 'integer'],
+            [['status', 'reserva_id', 'tipo_acessorio_id', 'cautela_acessorio_id'], 'integer'],
             [['cautela_acessorio_id'], 'exist', 'skipOnError' => true, 'targetClass' => CautelaAcessorio::className(), 'targetAttribute' => ['cautela_acessorio_id' => 'id']],
             [['reserva_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reserva::className(), 'targetAttribute' => ['reserva_id' => 'id']],
             [['tipo_acessorio_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoAcessorio::className(), 'targetAttribute' => ['tipo_acessorio_id' => 'id']],
@@ -50,6 +51,7 @@ class Acessorio extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'observacao' => 'Observacao',
+            'status' => 'Status',
             'reserva_id' => 'Reserva ID',
             'tipo_acessorio_id' => 'Tipo Acessorio ID',
             'cautela_acessorio_id' => 'Cautela Acessorio ID',

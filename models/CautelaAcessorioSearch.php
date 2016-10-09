@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\TipoMunicao;
+use app\models\CautelaAcessorio;
 
 /**
- * TipoMunicaoSearch represents the model behind the search form about `app\models\TipoMunicao`.
+ * CautelaAcessorioSearch represents the model behind the search form about `app\models\CautelaAcessorio`.
  */
-class TipoMunicaoSearch extends TipoMunicao
+class CautelaAcessorioSearch extends CautelaAcessorio
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class TipoMunicaoSearch extends TipoMunicao
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['calibre'], 'safe'],
+            [['id', 'militar_id', 'usuario_id'], 'integer'],
+            [['quantidade', 'data_inicio', 'data_fim'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class TipoMunicaoSearch extends TipoMunicao
      */
     public function search($params)
     {
-        $query = TipoMunicao::find();
+        $query = CautelaAcessorio::find();
 
         // add conditions that should always apply here
 
@@ -60,9 +60,13 @@ class TipoMunicaoSearch extends TipoMunicao
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'data_inicio' => $this->data_inicio,
+            'data_fim' => $this->data_fim,
+            'militar_id' => $this->militar_id,
+            'usuario_id' => $this->usuario_id,
         ]);
 
-        $query->andFilterWhere(['like', 'calibre', $this->calibre]);
+        $query->andFilterWhere(['like', 'quantidade', $this->quantidade]);
 
         return $dataProvider;
     }

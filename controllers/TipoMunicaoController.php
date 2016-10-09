@@ -5,29 +5,16 @@ namespace app\controllers;
 use Yii;
 use app\models\TipoMunicao;
 use app\models\TipoMunicaoSearch;
-use yii\web\Controller;
+use app\controllers\MainController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * TipoMunicaoController implements the CRUD actions for TipoMunicao model.
  */
-class TipoMunicaoController extends Controller
+class TipoMunicaoController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all TipoMunicao models.

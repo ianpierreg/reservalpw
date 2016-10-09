@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\TipoArmamentoSearch */
+/* @var $searchModel app\models\CautelaAcessorioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tipo Armamentos';
+$this->title = 'Cautela Acessorios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tipo-armamento-index">
+<div class="cautela-acessorio-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tipo Armamento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Cautela Acessorio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,8 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'modelo',
-            'fabricante',
+            'quantidade',
+            'data_inicio',
+            'data_fim',
+            'militar_id',
+            // 'usuario_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

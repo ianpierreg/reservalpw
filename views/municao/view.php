@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'observacao:ntext',
+            'status',
             'reserva_id',
             'tipo_municao_id',
             'cautela_municao_id',

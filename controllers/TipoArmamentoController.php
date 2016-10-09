@@ -5,29 +5,15 @@ namespace app\controllers;
 use Yii;
 use app\models\TipoArmamento;
 use app\models\TipoArmamentoSearch;
-use yii\web\Controller;
+use app\controllers\MainController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * TipoArmamentoController implements the CRUD actions for TipoArmamento model.
  */
-class TipoArmamentoController extends Controller
+class TipoArmamentoController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all TipoArmamento models.

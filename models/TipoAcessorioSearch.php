@@ -18,7 +18,7 @@ class TipoAcessorioSearch extends TipoAcessorio
     public function rules()
     {
         return [
-            [['id', 'quantidade'], 'integer'],
+            [['id'], 'integer'],
             [['descricao'], 'safe'],
         ];
     }
@@ -60,7 +60,6 @@ class TipoAcessorioSearch extends TipoAcessorio
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quantidade' => $this->quantidade,
         ]);
 
         $query->andFilterWhere(['like', 'descricao', $this->descricao]);

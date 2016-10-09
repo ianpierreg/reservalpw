@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\TipoAcessorio */
+/* @var $model app\models\CautelaAcessorio */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Tipo Acessorios', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Cautela Acessorios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="tipo-acessorio-view">
+<div class="cautela-acessorio-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,7 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'descricao',
+            'quantidade',
+            'data_inicio',
+            'data_fim',
+            'militar_id',
+            'usuario_id',
         ],
     ]) ?>
 

@@ -26,9 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'observacao:ntext',
+            'status',
             'reserva_id',
             'tipo_acessorio_id',
-            'cautela_acessorio_id',
+            // 'cautela_acessorio_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

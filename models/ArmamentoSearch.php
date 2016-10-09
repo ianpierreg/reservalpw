@@ -18,7 +18,7 @@ class ArmamentoSearch extends Armamento
     public function rules()
     {
         return [
-            [['id', 'reserva_id', 'tipo_armamento_id', 'cautela_armamento_id'], 'integer'],
+            [['id', 'status', 'reserva_id', 'tipo_armamento_id', 'cautela_armamento_id'], 'integer'],
             [['num_serie'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class ArmamentoSearch extends Armamento
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'status' => $this->status,
             'reserva_id' => $this->reserva_id,
             'tipo_armamento_id' => $this->tipo_armamento_id,
             'cautela_armamento_id' => $this->cautela_armamento_id,

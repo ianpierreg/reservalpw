@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'num_serie')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'status')->textInput() ?>
+
     <?= $form->field($model, 'reserva_id')->textInput() ?>
 
     <?= $form->field($model, 'tipo_armamento_id')->textInput() ?>

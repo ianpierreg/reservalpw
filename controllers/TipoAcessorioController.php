@@ -5,29 +5,16 @@ namespace app\controllers;
 use Yii;
 use app\models\TipoAcessorio;
 use app\models\TipoAcessorioSearch;
-use yii\web\Controller;
+use app\controllers\MainController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * TipoAcessorioController implements the CRUD actions for TipoAcessorio model.
  */
-class TipoAcessorioController extends Controller
+class TipoAcessorioController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all TipoAcessorio models.

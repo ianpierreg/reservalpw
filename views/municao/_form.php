@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'observacao')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'status')->textInput() ?>
+
     <?= $form->field($model, 'reserva_id')->textInput() ?>
 
     <?= $form->field($model, 'tipo_municao_id')->textInput() ?>

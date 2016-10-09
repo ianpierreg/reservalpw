@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $id
  * @property string $calibre
- * @property integer $quantidade
  *
  * @property Municao[] $municaos
  */
@@ -29,8 +28,7 @@ class TipoMunicao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['calibre', 'quantidade'], 'required'],
-            [['quantidade'], 'integer'],
+            [['calibre'], 'required'],
             [['calibre'], 'string', 'max' => 45],
         ];
     }
@@ -43,7 +41,6 @@ class TipoMunicao extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'calibre' => 'Calibre',
-            'quantidade' => 'Quantidade',
         ];
     }
 
