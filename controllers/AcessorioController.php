@@ -65,6 +65,12 @@ class AcessorioController extends Controller
     {
         $model = new Acessorio();
 
+        $model->status = 0;
+        if(!isset(Yii::$app->session)){
+            @session_start();
+        }
+        $model->reserva_id = $_SESSION['reserva'];
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

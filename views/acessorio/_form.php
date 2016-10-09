@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\TipoAcessorio;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Acessorio */
@@ -14,13 +16,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'observacao')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?php $status = [
+        0 => 'Disponível',
+        1 => 'Cautelado',
+        2 => 'Em Manuntenção',
+        3 => 'Desativada'
+    ]?>
 
-    <?= $form->field($model, 'reserva_id')->textInput() ?>
+    <?php if(!$model->isNewRecord): ?>
+        <?= $form->field($model, 'status')->dropDownList($status, [
+            'prompt' => 'Selecione o estado do acessório ...'
+        ]) ?>
+    <?php endif; ?>
 
-    <?= $form->field($model, 'tipo_acessorio_id')->textInput() ?>
+    <?= $form->field($model, 'tipo_acessorio_id')->dropDownList(ArrayHelper::map(TipoAcessorio::find()->all(), 'id', 'descricao'), [
+        'prompt' => 'Selecione modelo do armamento ...'
 
-    <?= $form->field($model, 'cautela_acessorio_id')->textInput() ?>
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

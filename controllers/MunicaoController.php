@@ -64,6 +64,11 @@ class MunicaoController extends Controller
     public function actionCreate()
     {
         $model = new Municao();
+        $model->status = 0;
+        if(!isset(Yii::$app->session)){
+            @session_start();
+        }
+        $model->reserva_id = $_SESSION['reserva'];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

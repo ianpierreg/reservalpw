@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\TipoArmamento;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Armamento */
@@ -14,13 +16,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'num_serie')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?php $status = [
+        0 => 'Disponível',
+        1 => 'Cautelada',
+        2 => 'Em Manuntenção',
+        3 => 'Desativada'
+    ]?>
 
-    <?= $form->field($model, 'reserva_id')->textInput() ?>
+    <?php if(!$model->isNewRecord): ?>
+        <?= $form->field($model, 'status')->dropDownList($status,[
+            'prompt' => 'Selecione o estado do armamento ...'
+        ]) ?>
+    <?php endif; ?>
 
-    <?= $form->field($model, 'tipo_armamento_id')->textInput() ?>
+    <?= $form->field($model, 'tipo_armamento_id')->dropDownList(ArrayHelper::map(TipoArmamento::find()->all(), 'id', 'modelo'), [
+        'prompt' => 'Selecione modelo do armamento ...'
 
-    <?= $form->field($model, 'cautela_armamento_id')->textInput() ?>
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
