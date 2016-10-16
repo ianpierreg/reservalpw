@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Municao;
 use Yii;
 use app\models\CautelaMunicao;
 use app\models\CautelaMunicaoSearch;
@@ -65,14 +66,28 @@ class CautelaMunicaoController extends Controller
     {
         $model = new CautelaMunicao();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->data_inicio = Yii::$app->formatter->asDate($model->data_inicio);
+            $model->data_fim = Yii::$app->formatter->asDate($model->data_fim);
+            $model->usuario_id = Yii::$app->user->id;
+            $model->quantidade = count(Yii::$app->request->post('municoes'));
+
+            if($model->save()) {
+                foreach (Yii::$app->request->post('municoes') as $id) {
+                    $municao = Municao::findOne($id);
+                    $municao->status = 1;
+                    $municao->cautela_municao_id = $model->id;
+                    $municao->update();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
+
 
     /**
      * Updates an existing CautelaMunicao model.

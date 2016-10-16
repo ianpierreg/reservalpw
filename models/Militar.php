@@ -45,7 +45,7 @@ class Militar extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'posto' => 'Posto',
+            'posto' => 'Posto/Graduação',
             'nome_guerra' => 'Nome Guerra',
         ];
     }

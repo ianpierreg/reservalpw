@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Acessorio;
 use Yii;
 use app\models\CautelaAcessorio;
 use app\models\CautelaAcessorioSearch;
@@ -65,8 +66,21 @@ class CautelaAcessorioController extends Controller
     {
         $model = new CautelaAcessorio();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->data_inicio = Yii::$app->formatter->asDate($model->data_inicio);
+            $model->data_fim = Yii::$app->formatter->asDate($model->data_fim);
+            $model->usuario_id = Yii::$app->user->id;
+            $model->quantidade = count(Yii::$app->request->post('acessorios'));
+
+            if($model->save()) {
+                foreach (Yii::$app->request->post('acessorios') as $id) {
+                    $acessorio = Acessorio::findOne($id);
+                    $acessorio->status = 1;
+                    $acessorio->cautela_acessorio_id = $model->id;
+                    $acessorio->update();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -105,6 +119,8 @@ class CautelaAcessorioController extends Controller
 
         return $this->redirect(['index']);
     }
+    
+    
 
     /**
      * Finds the CautelaAcessorio model based on its primary key value.

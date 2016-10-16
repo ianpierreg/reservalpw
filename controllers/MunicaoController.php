@@ -68,7 +68,7 @@ class MunicaoController extends Controller
         if(!isset(Yii::$app->session)){
             @session_start();
         }
-        $model->reserva_id = $_SESSION['reserva'];
+        $model->reserva_id = Yii::$app->session['reserva'];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

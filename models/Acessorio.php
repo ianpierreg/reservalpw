@@ -17,6 +17,7 @@ use Yii;
  * @property CautelaAcessorio $cautelaAcessorio
  * @property Reserva $reserva
  * @property TipoAcessorio $tipoAcessorio
+ * @property string $tipo
  */
 class Acessorio extends \yii\db\ActiveRecord
 {
@@ -81,4 +82,10 @@ class Acessorio extends \yii\db\ActiveRecord
     {
         return $this->hasOne(TipoAcessorio::className(), ['id' => 'tipo_acessorio_id']);
     }
+
+    public function getTipo()
+    {
+        return TipoAcessorio::findOne($this->tipo_acessorio_id)->descricao ." (". $this->observacao.")";
+    }
+
 }

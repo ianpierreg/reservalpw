@@ -36,10 +36,8 @@ class CautelaAcessorio extends \yii\db\ActiveRecord
         return [
             [['quantidade', 'data_inicio', 'data_fim', 'militar_id', 'usuario_id'], 'required'],
             [['data_inicio', 'data_fim'], 'safe'],
-            [['militar_id', 'usuario_id'], 'integer'],
-            [['quantidade'], 'string', 'max' => 45],
+            [['militar_id', 'usuario_id', 'quantidade'], 'integer'],
             [['militar_id'], 'exist', 'skipOnError' => true, 'targetClass' => Militar::className(), 'targetAttribute' => ['militar_id' => 'id']],
-            [['usuario_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['usuario_id' => 'id']],
         ];
     }
 

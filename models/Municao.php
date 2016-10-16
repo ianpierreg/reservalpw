@@ -17,6 +17,7 @@ use Yii;
  * @property CautelaMunicao $cautelaMunicao
  * @property Reserva $reserva
  * @property TipoMunicao $tipoMunicao
+ * @property string $tipo
  */
 class Municao extends \yii\db\ActiveRecord
 {
@@ -80,5 +81,10 @@ class Municao extends \yii\db\ActiveRecord
     public function getTipoMunicao()
     {
         return $this->hasOne(TipoMunicao::className(), ['id' => 'tipo_municao_id']);
+    }
+
+    public function getTipo()
+    {
+         return TipoMunicao::findOne($this->tipo_municao_id)->calibre ." (". $this->observacao.")";
     }
 }

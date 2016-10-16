@@ -36,6 +36,15 @@ class MilitarController extends MainController
      * @param integer $id
      * @return mixed
      */
+
+    private function getPostos ()
+    {
+        return [1 => 'Soldado', 2 => 'Tafeiro de 1ª Classe', 3 => 'Tafeiro de 2ª Classe', 4 => 'Tafeiro Mor', 5 => 'Cabo',
+            6 => '3º Sargento', 7 => '2º Sargento', 8 => '1º Sargento', 9 => 'Subtenente', 10 => 'Aspirante a Oficial',
+            11 => '2º Tenente', 12 => '1º Tenente', 13 => 'Capitão', 14 => 'Major', 15 => '2º Tenente-Coronel', 16 => 'Coronel',
+            17 => 'General de Brigada', 18 => 'General de Divisão', 19 => 'General de Exército', 20 => 'Marechal'];
+    }
+
     public function actionView($id)
     {
         return $this->render('view', [
@@ -51,12 +60,13 @@ class MilitarController extends MainController
     public function actionCreate()
     {
         $model = new Militar();
-
+        $postos = $this->getPostos();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'postos' => $postos,
             ]);
         }
     }

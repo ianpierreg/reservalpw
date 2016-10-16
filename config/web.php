@@ -8,6 +8,23 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+        'log'=>array(
+            'class'=>'CLogRouter',
+            'routes'=>array(
+                array(
+                    'class'=>'CFileLogRoute',
+                    'levels'=>'error, trace',
+                ),
+            ),
+        ),
+
+        'formatter' => [
+            'dateFormat' => 'yyyy-MM-dd',
+            'datetimeFormat' => 'yyyy-MM-dd H:i:s',
+            'timeFormat' => 'H:i:s',
+            'locale' => 'pt-BR', //your language locale
+            'defaultTimeZone' => 'Europe/Berlin', // time zone
+        ],
 
         'user' => [
             'class' => 'webvimark\modules\UserManagement\components\UserConfig',

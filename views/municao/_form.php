@@ -23,8 +23,8 @@ use app\models\TipoMunicao;
     ]?>
 
 
-    <?= $form->field($model, 'tipo_acessorio_id')->dropDownList(ArrayHelper::map(TipoMunicao::find()->all(), 'id', 'calibre'), [
-        'prompt' => 'Selecione modelo do armamento ...'
+    <?= $form->field($model, 'tipo_municao_id')->dropDownList(ArrayHelper::map(TipoMunicao::find()->all(), 'id', 'calibre'), [
+        'prompt' => 'Selecione o calibre da munição ...'
 
     ]) ?>
 

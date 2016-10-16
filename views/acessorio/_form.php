@@ -30,7 +30,7 @@ use app\models\TipoAcessorio;
     <?php endif; ?>
 
     <?= $form->field($model, 'tipo_acessorio_id')->dropDownList(ArrayHelper::map(TipoAcessorio::find()->all(), 'id', 'descricao'), [
-        'prompt' => 'Selecione modelo do armamento ...'
+        'prompt' => 'Selecione tipo do acessório ...'
 
     ]) ?>
 

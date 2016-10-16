@@ -372,7 +372,7 @@ $baseUrl = $AppAsset->baseUrl;
                                 <a href="<?= Url::base() . "/cautela-armamento" ?>">
 
                                     <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
-                                    <span class="site-menu-title">Caulta de Armamentos</span>
+                                    <span class="site-menu-title">Cautela de Armamentos</span>
                                 </a>
                             </li>
 

@@ -17,6 +17,7 @@ use Yii;
  * @property CautelaArmamento $cautelaArmamento
  * @property Reserva $reserva
  * @property TipoArmamento $tipoArmamento
+ * @property string $tipo
  */
 class Armamento extends \yii\db\ActiveRecord
 {
@@ -80,5 +81,10 @@ class Armamento extends \yii\db\ActiveRecord
     public function getTipoArmamento()
     {
         return $this->hasOne(TipoArmamento::className(), ['id' => 'tipo_armamento_id']);
+    }
+
+    public function getTipo()
+    {
+       return $this->num_serie. "  ----  ". TipoArmamento::findOne($this->tipo_armamento_id)->modelo;
     }
 }
