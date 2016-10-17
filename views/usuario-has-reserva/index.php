@@ -10,14 +10,14 @@ use yii\grid\GridView;
 $this->title = 'Usuario Has Reservas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuario-has-reserva-index">
+<div class="usuario-has-reserva-index panel">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="panel-title">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Usuario Has Reserva', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -28,6 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'reserva_id',
 
             ['class' => 'yii\grid\ActionColumn'],
+
+            [
+                'attribute' => 'some_title',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return '<div>'.$model->id.' and other html-code</div>';
+                },
+            ],
         ],
     ]); ?>
+        </div>
 </div>

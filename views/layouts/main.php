@@ -270,13 +270,28 @@ $baseUrl = $AppAsset->baseUrl;
         <div>
             <div>
                 <ul class="site-menu">
-                    <li class="site-menu-category">Cabo Armeiro X</li>
-                    <li class="site-menu-item has-sub">
-                        <a href="<?= Url::base() . "/user-management/user" ?>">
-                            <i class="site-menu-icon wb-users" aria-hidden="true"></i>
-                            <span class="site-menu-title">Gerenciar usuários</span>
-                        </a>
-                    </li>
+                    <?php if(Yii::$app->user->id == 1): ?>
+                    <li class="site-menu-category">Administrador</li>
+                        <li class="site-menu-item has-sub">
+                            <a href="<?= Url::base() . "/user-management/user" ?>">
+                                <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                                <span class="site-menu-title">Gerenciar usuários</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="<?= Url::base() . "/user-management/role" ?>">
+                                <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                                <span class="site-menu-title">Gerenciar regras</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="<?= Url::base() . "/user-management/permission" ?>">
+                                <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                                <span class="site-menu-title">Gerenciar permissões</span>
+                            </a>
+                        </li>
+                    <?php else:?>
+                    <li class="site-menu-category">Cabo armeiro</li>
                     <li class="site-menu-item has-sub">
                         <a href="<?= Url::base() . "/reserva" ?>">
                             <i class="site-menu-icon wb-tag" aria-hidden="true"></i>
@@ -393,6 +408,7 @@ $baseUrl = $AppAsset->baseUrl;
                                     <span class="site-menu-title">Cautela de acessórios</span>
                                 </a>
                             </li>
+                            <?php endif; ?>
                         </ul>
 
 

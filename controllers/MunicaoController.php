@@ -12,22 +12,9 @@ use yii\filters\VerbFilter;
 /**
  * MunicaoController implements the CRUD actions for Municao model.
  */
-class MunicaoController extends Controller
+class MunicaoController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all Municao models.

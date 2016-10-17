@@ -10,14 +10,17 @@ use yii\grid\GridView;
 $this->title = 'Cautela Acessorios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cautela-acessorio-index">
+<div class="cautela-acessorio-index panel">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="panel-title">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Cautela Acessorio', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel-body">
+        <p>
+            <?= Html::a('Cautelar Acessório', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -34,4 +37,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+        </div>
 </div>

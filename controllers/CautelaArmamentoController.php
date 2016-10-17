@@ -13,22 +13,9 @@ use yii\filters\VerbFilter;
 /**
  * CautelaArmamentoController implements the CRUD actions for CautelaArmamento model.
  */
-class CautelaArmamentoController extends Controller
+class CautelaArmamentoController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all CautelaArmamento models.
@@ -99,8 +86,18 @@ class CautelaArmamentoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->data_fim = Yii::$app->formatter->asDate($model->data_fim);
+            $model->quantidade -= count(Yii::$app->request->post('armamentos'));
+            if($model->save()) {
+                foreach (Yii::$app->request->post('armamentos') as $idArmamento) {
+                    $armamento = Armamento::findOne($idArmamento);
+                    $armamento->status = 0;
+                    $armamento->cautela_armamento_id = null;
+                    $armamento->update();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -116,6 +113,9 @@ class CautelaArmamentoController extends Controller
      */
     public function actionDelete($id)
     {
+
+        Armamento::updateAll(['status' => 0, 'cautela_armamento_id' => null], 'cautela_armamento_id = '.$id);
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

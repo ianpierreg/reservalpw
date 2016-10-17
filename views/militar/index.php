@@ -10,14 +10,17 @@ use yii\grid\GridView;
 $this->title = 'Militars';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="militar-index">
+<div class="militar-index panel">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="panel-title">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Militar', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel-body">
+        <p>
+            <?= Html::a('Cadastrar militar', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -31,4 +34,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+        </div>
 </div>

@@ -10,28 +10,33 @@ use yii\grid\GridView;
 $this->title = 'Cautela Armamentos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cautela-armamento-index">
+<div class="cautela-armamento-index panel">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="panel-title">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Cautela Armamento', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel-body">
+        <p>
+            <?= Html::a('Cautelar Armamento', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            'militar.nome_guerra',
             'quantidade',
             'data_inicio',
             'data_fim',
-            'militar_id',
+
             // 'usuario_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'header' => 'Ações'
+            ],
         ],
     ]); ?>
+        </div>
 </div>

@@ -10,13 +10,16 @@ use yii\grid\GridView;
 $this->title = 'Acessorios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="acessorio-index">
+<div class="acessorio-index panel">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="panel-title">
+        <h1><?= Html::encode($this->title) ?></h1>
+    </div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <div class="panel-body">
     <p>
-        <?= Html::a('Create Acessorio', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Cadastrar novo Armamento', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -34,4 +37,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    </div>
 </div>

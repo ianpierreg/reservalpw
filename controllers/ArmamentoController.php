@@ -12,22 +12,9 @@ use yii\filters\VerbFilter;
 /**
  * ArmamentoController implements the CRUD actions for Armamento model.
  */
-class ArmamentoController extends Controller
+class ArmamentoController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all Armamento models.
@@ -107,6 +94,7 @@ class ArmamentoController extends Controller
      */
     public function actionDelete($id)
     {
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

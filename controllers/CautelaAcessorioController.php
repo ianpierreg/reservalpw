@@ -13,22 +13,9 @@ use yii\filters\VerbFilter;
 /**
  * CautelaAcessorioController implements the CRUD actions for CautelaAcessorio model.
  */
-class CautelaAcessorioController extends Controller
+class CautelaAcessorioController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all CautelaAcessorio models.
@@ -98,8 +85,19 @@ class CautelaAcessorioController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->data_fim = Yii::$app->formatter->asDate($model->data_fim);
+            $model->quantidade = count(Yii::$app->request->post('acessorios'));
+
+            if($model->save()) {
+                foreach (Yii::$app->request->post('acessorios') as $idAcessorios) {
+                    $acessorio = Acessorio::findOne($idAcessorios);
+                    $acessorio->status = 0;
+                    $acessorio->cautela_acessorio_id = null;
+                    $acessorio->update();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -115,6 +113,7 @@ class CautelaAcessorioController extends Controller
      */
     public function actionDelete($id)
     {
+        Acessorio::updateAll(['status' => 0, 'cautela_acessorio_id' => null], 'cautela_acessorio_id = '.$id);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

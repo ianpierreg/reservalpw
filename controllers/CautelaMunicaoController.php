@@ -13,22 +13,8 @@ use yii\filters\VerbFilter;
 /**
  * CautelaMunicaoController implements the CRUD actions for CautelaMunicao model.
  */
-class CautelaMunicaoController extends Controller
+class CautelaMunicaoController extends MainController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all CautelaMunicao models.
@@ -99,8 +85,17 @@ class CautelaMunicaoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (count(Yii::$app->request->post('municoes')) != 0) {
+            $model->quantidade -= count(Yii::$app->request->post('municoes'));
+            if($model->save()) {
+                foreach (Yii::$app->request->post('municoes') as $idMunicao) {
+                    $municao = Municao::findOne($idMunicao);
+                    $municao->status = 0;
+                    $municao->cautela_municao_id = null;
+                    $municao->update();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -116,6 +111,7 @@ class CautelaMunicaoController extends Controller
      */
     public function actionDelete($id)
     {
+        Municao::deleteAll(['cautela_municao_id' => $id]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

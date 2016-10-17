@@ -12,22 +12,12 @@ use yii\filters\VerbFilter;
 /**
  * AcessorioController implements the CRUD actions for Acessorio model.
  */
-class AcessorioController extends Controller
+class AcessorioController extends MainController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
     /**
      * Lists all Acessorio models.
